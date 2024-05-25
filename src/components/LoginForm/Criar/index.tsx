@@ -31,9 +31,8 @@ export default function LoginFormCriar() {
 
       <Input type="password" name="password" label="Senha" />
 
-      <FormButton />
-
       <ErrorMessage error={state.error} />
+      <FormButton />
     </form>
   );
 }
