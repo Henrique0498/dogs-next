@@ -2,8 +2,10 @@ import Link from "next/link";
 
 import styles from "./header.module.css";
 import Image from "next/image";
+import userGet from "@/actions/userGet";
 
 export default async function Header() {
+  const { data } = await userGet();
   const user = false;
 
   return (
@@ -18,9 +20,9 @@ export default async function Header() {
             priority
           />
         </Link>
-        {user ? (
+        {data ? (
           <Link href="/conta" className={styles.login}>
-            Dogs
+            {data.username}
           </Link>
         ) : (
           <Link href="/login" className={styles.login}>
