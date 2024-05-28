@@ -1,14 +1,19 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+
+import useMedia from "@/hooks/use-media";
+import { usePathname } from "next/navigation";
+import logout from "@/actions/logout";
+import { useUser } from "@/context/userContext";
+
 import FeedIcon from "@/icons/feed-icon";
 import EstatisticasIcon from "@/icons/estatisticas-icon";
 import AdicionarIcon from "@/icons/adicionar-icon";
 import SairIcon from "@/icons/sair-icon";
+
 import styles from "./conta-header.module.css";
-import useMedia from "@/hooks/use-media";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 
 function getTitle(pathname: string) {
   switch (pathname) {
@@ -24,14 +29,16 @@ function getTitle(pathname: string) {
 export default function ContaHeader() {
   const mobile = useMedia("(max-width: 40rem)");
   const [mobileMenu, setMobileMenu] = React.useState(false);
+  const { setUser } = useUser();
 
   const pathname = usePathname();
   React.useEffect(() => {
     setMobileMenu(false);
   }, [pathname]);
 
-  function handleLogout() {
-    // userLogout();
+  async function handleLogout() {
+    await logout();
+    setUser(null);
   }
 
   return (
