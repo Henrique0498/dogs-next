@@ -14,7 +14,7 @@ export default function FeedPhotos({ photos }: { photos: Photo[] }) {
           key={photo.id + i}
           className={styles.photo}
         >
-          <Link href={`/photo/${photo.id}`} scroll={false}>
+          <Link href={`/foto/${photo.id}`} scroll={false}>
             <Image
               src={photo.src}
               alt={photo.title}
