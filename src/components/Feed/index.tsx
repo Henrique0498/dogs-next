@@ -1,8 +1,11 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 
 import photosGet, { Photo } from "@/actions/photosGet";
 import FeedPhotos from "./FeedPhotos";
-import { useEffect, useRef, useState } from "react";
+import Loading from "@/components/Helper/Loading";
+
+import styles from "./feed.module.css";
 
 export default function Feed({
   photos,
@@ -36,7 +39,7 @@ export default function Feed({
     if (page === 1) return;
     async function getPagePhotos(page: number) {
       const actionData = await photosGet(
-        { page, total: 6, user: 0 },
+        { page, total: 6, user },
         {
           cache: "no-store",
         }
@@ -52,7 +55,7 @@ export default function Feed({
       }
     }
     getPagePhotos(page);
-  }, [page]);
+  }, [page, user]);
 
   useEffect(() => {
     if (infinite) {
@@ -71,7 +74,9 @@ export default function Feed({
   return (
     <div>
       <FeedPhotos photos={photosFeed} />
-      {loading && <p>Carregando...</p>}
+      <div className={styles.loadingWrapper}>
+        {infinite ? loading && <Loading /> : <p>Não existe mais postagem</p>}
+      </div>
     </div>
   );
 }
