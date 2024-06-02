@@ -21,24 +21,25 @@ type PhotosFetParams = {
   user?: 0 | string;
 };
 
-export default async function photosGet({
-  page = 1,
-  total = 6,
-  user = 0,
-}: PhotosFetParams = {}) {
+export default async function photosGet(
+  { page = 1, total = 6, user = 0 }: PhotosFetParams = {},
+  optionsFront?: RequestInit
+) {
   try {
+    const options = optionsFront || {
+      next: {
+        revalidate: 10,
+        tags: ["photos"],
+      },
+    };
+
     const { url } = PHOTOS_GET({
       page,
       total,
       user,
     });
 
-    const response = await fetch(url, {
-      next: {
-        revalidate: 10,
-        tags: ["photos"],
-      },
-    });
+    const response = await fetch(url, options);
 
     if (!response.ok) {
       throw new Error("Erro ao pegar as fotos");
