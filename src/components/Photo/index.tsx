@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import PhotoDelete from "./Delete";
+import { PhotoDelete } from "./Delete";
 import { PhotoData } from "@/actions/photoGet";
 import { useUser } from "@/context/userContext";
 
