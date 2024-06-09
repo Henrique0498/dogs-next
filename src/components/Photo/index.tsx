@@ -8,6 +8,7 @@ import { PhotoData } from "@/actions/photoGet";
 import { useUser } from "@/context/userContext";
 
 import styles from "./photo.module.css";
+import { PhotoComments } from "./Comments";
 
 const PhotoContent = ({
   data,
@@ -17,7 +18,7 @@ const PhotoContent = ({
   single: boolean;
 }) => {
   const { user } = useUser();
-  const { photo } = data;
+  const { photo, comments } = data;
 
   return (
     <div className={`${styles.photo} ${single ? styles.single : ""}`}>
@@ -43,6 +44,7 @@ const PhotoContent = ({
           </ul>
         </div>
       </div>
+      <PhotoComments comments={comments} id={photo.id} single={single} />
     </div>
   );
 };
