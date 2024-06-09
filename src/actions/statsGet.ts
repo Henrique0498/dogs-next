@@ -1,28 +1,27 @@
 "use server";
 
+import { STATS_GET } from "@/functions/api";
+import apiError from "@/functions/api-error";
+import { Photo } from "./photosGet";
 import { cookies } from "next/headers";
 
-import { USER_GET } from "@/functions/api";
-import apiError from "@/functions/api-error";
-
-export type User = {
+export type StatsData = {
   id: number;
-  email: string;
-  username: string;
-  name: string;
+  title: string;
+  acessos: string;
 };
 
-export default async function userGet() {
+export default async function statsGet() {
   try {
     const token = cookies().get("token")?.value;
 
     if (!token) {
-      throw new Error("Token não encontrado");
+      throw new Error("Acesso negado");
     }
 
-    const { url } = USER_GET();
+    const { url } = STATS_GET();
+
     const response = await fetch(url, {
-      method: "GET",
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -32,13 +31,13 @@ export default async function userGet() {
     });
 
     if (!response.ok) {
-      throw new Error("Erro ao pegar o usuário.");
+      throw new Error("Erro ao buscar os dados");
     }
 
-    const data = (await response.json()) as User;
+    const data = (await response.json()) as StatsData[];
 
     return { data, ok: true, error: "" };
-  } catch (error: unknown) {
+  } catch (error) {
     return apiError(error);
   }
 }
