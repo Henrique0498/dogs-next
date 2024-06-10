@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dogs - Rede Social para Cachorros
 
-## Getting Started
+Bem-vindo ao Dogs, uma rede social dedicada aos amantes de cachorros! Este projeto foi desenvolvido utilizando o que há de mais novo no ecossistema Next.js, como parte de um curso de Next.js oferecido pela [Origamid](https://www.origamid.com/). Aqui, os usuários podem compartilhar fotos, histórias e interagir com outros donos de cachorros.
 
-First, run the development server:
+A versão de deploy do projeto está disponível em: [dogsnext.henriquelopes.dev.br](https://dogsnext.henriquelopes.dev.br)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Usuário**: dogs
+- **Senha**: 1234
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 14**: A estrutura principal do projeto, oferecendo renderização do lado do servidor, geração estática e um poderoso sistema de rotas.
+- **CSS Modules**: Para estilização dos componentes com escopo local e prevenção de conflitos de nomes.
+- **TypeScript**: Adição de tipagem estática ao JavaScript, proporcionando um desenvolvimento mais seguro e robusto.
+- **Victory**: Biblioteca para criação de gráficos interativos e altamente personalizáveis.
+- **Jose**: Utilizada para validação de tokens JWT, garantindo segurança na autenticação e autorização de usuários.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Funcionalidades
 
-## Learn More
+- **Cadastro e Login**: Permite que os usuários se registrem e façam login na plataforma.
+- **Postagens de Fotos**: Os usuários podem postar fotos dos seus cachorros.
+- **Interação Social**: Os usuários podem comentar nas fotos de outros usuários.
+- **Gráficos**: Exibição de gráficos de estatísticas sobre o uso da plataforma, como número de postagens e interações.
 
-To learn more about Next.js, take a look at the following resources:
+## Como Executar o Projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone o Repositório**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```bash
+    git clone https://github.com/Henrique0498/dogs-next.git
+    cd dogs-next
+    ```
 
-## Deploy on Vercel
+2. **Instale as Dependências**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm install
+    # ou
+    yarn install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. **Execute o Projeto em Desenvolvimento**
+
+    ```bash
+    npm run dev
+    # ou
+    yarn dev
+    ```
+
+    Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+
+## Estrutura do Projeto
+
+```plaintext
+.
+├── src
+│   ├── components    # Componentes reutilizáveis da aplicação
+│   │   └── ComponenteExemplo
+│   │       ├── index.tsx
+│   │       └── ComponenteExemplo.module.css
+│   └── pages         # Páginas e rotas do Next.js
+├── public   # Arquivos estáticos
+└── ...               # Outros arquivos e diretórios na raiz do projeto
