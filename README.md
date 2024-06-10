@@ -58,6 +58,7 @@ A versão de deploy do projeto está disponível em: [dogsnext.henriquelopes.dev
 │   │   └── ComponenteExemplo
 │   │       ├── index.tsx
 │   │       └── ComponenteExemplo.module.css
-│   └── pages         # Páginas e rotas do Next.js
+│   ├── app                # Páginas e rotas do Next.js
+│   └── ...                # Outros arquivos e diretórios
 ├── public   # Arquivos estáticos
 └── ...               # Outros arquivos e diretórios na raiz do projeto
